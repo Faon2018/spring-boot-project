@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--<mapper namespace="com.faon.blog.mapper.UserMapper">-->
+<mapper namespace="com.faon.blog.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.faon.blog.entity.SystemUser">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <collection property="systemUserRoles" column="id" ofType="com.faon.blog.entity.SystemUserRole" javaType="ArrayList"
+            select="com.faon.blog.mapper.UserRoleMapper.findByUserId" />
+        <!--            select="findByUserId" />-->
+
+    </resultMap>
+    <sql id="selectField">
+        id,username,password
+    </sql>
+
+    <select id="findUserById" resultMap="BaseResultMap">
+        select
+        <include refid="selectField"/>
+        from user where id = #{id}
+    </select>
+
+
+
+    <insert id="add" parameterType="com.faon.blog.entity.SystemUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user` (username,password) values (#{username},#{password})
+    </insert>
+
+</mapper>

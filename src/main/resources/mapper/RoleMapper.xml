@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.faon.blog.mapper.RoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.faon.blog.entity.SystemRole">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+
+    </resultMap>
+    <sql id="selectField">
+        id,`name`,status
+    </sql>
+
+    <select id="findRoleById" resultMap="BaseResultMap" resultType="com.faon.blog.entity.SystemRole">
+        select
+        <include refid="selectField"/>
+        from role
+        where id = #{id} and status = 0
+    </select>
+
+
+
+</mapper>
