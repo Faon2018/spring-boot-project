@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 public interface RoleMapper {
-    SystemRole findRoleById(@PathVariable("id") int id);
+    SystemRole findRoleByRoleId(@PathVariable("roleId") int roleId);
 }

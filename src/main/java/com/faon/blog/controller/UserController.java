@@ -1,5 +1,6 @@
 package com.faon.blog.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.faon.blog.dao.UserDao;
 import com.faon.blog.entity.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class UserController {
     public String findUser(@PathVariable int id){
         SystemUser user = userDao.findUserById(id);
         System.out.println(user);
-        return "查找成功";
+        String userJson = JSON.toJSONString(user);
+        System.out.println(userJson);
+        return userJson;
     }
 }

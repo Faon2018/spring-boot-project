@@ -38,4 +38,14 @@ public class SystemOperation {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "SystemOperation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

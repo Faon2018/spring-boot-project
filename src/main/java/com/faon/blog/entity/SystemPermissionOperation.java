@@ -3,33 +3,33 @@ package com.faon.blog.entity;
 import java.util.List;
 
 public class SystemPermissionOperation {
-    private Long id;
-    private Long permissionId;
-    private Long operationId;
+    private Integer id;
+    private Integer permissionId;
+    private Integer operationId;
     private Integer status;
     private List<SystemOperation> systemOperations;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getPermissionId() {
+    public Integer getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(Long permissionId) {
+    public void setPermissionId(Integer permissionId) {
         this.permissionId = permissionId;
     }
 
-    public Long getOperationId() {
+    public Integer getOperationId() {
         return operationId;
     }
 
-    public void setOperationId(Long operationId) {
+    public void setOperationId(Integer operationId) {
         this.operationId = operationId;
     }
 
