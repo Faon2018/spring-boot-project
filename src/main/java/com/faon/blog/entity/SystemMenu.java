@@ -3,20 +3,20 @@ package com.faon.blog.entity;
 import java.util.List;
 
 public class SystemMenu {
-    private Long id;
+    private Integer id;
     private String name;
     private String url;
-    private Long sort;
-    private Long parentId;
+    private Integer sort;
+    private Integer parentId;
     private Integer status;
     private List<SystemMenu> childrenMenus;
     private SystemMenu parentMenu;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,19 +36,19 @@ public class SystemMenu {
         this.url = url;
     }
 
-    public Long getSort() {
+    public Integer getSort() {
         return sort;
     }
 
-    public void setSort(Long sort) {
+    public void setSort(Integer sort) {
         this.sort = sort;
     }
 
-    public Long getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 

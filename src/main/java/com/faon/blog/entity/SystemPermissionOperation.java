@@ -1,13 +1,16 @@
 package com.faon.blog.entity;
 
-import java.util.List;
 
+/**
+ * permission 与 permission_operation 一对多
+ * permission_operation 与 operation 一对一
+ */
 public class SystemPermissionOperation {
     private Integer id;
     private Integer permissionId;
     private Integer operationId;
     private Integer status;
-    private List<SystemOperation> systemOperations;
+    private SystemOperation systemOperation;
 
     public Integer getId() {
         return id;
@@ -41,12 +44,12 @@ public class SystemPermissionOperation {
         this.status = status;
     }
 
-    public List<SystemOperation> getSystemOperations() {
-        return systemOperations;
+    public SystemOperation getSystemOperation() {
+        return systemOperation;
     }
 
-    public void setSystemOperations(List<SystemOperation> systemOperations) {
-        this.systemOperations = systemOperations;
+    public void setSystemOperation(SystemOperation systemOperation) {
+        this.systemOperation = systemOperation;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class SystemPermissionOperation {
                 ", permissionId=" + permissionId +
                 ", operationId=" + operationId +
                 ", status=" + status +
-                ", systemOperations=" + systemOperations +
+                ", systemOperation=" + systemOperation +
                 '}';
     }
 }

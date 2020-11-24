@@ -8,6 +8,9 @@
         <result column="status" jdbcType="INTEGER" property="status" />
         <collection property="systemRolePermissions" column="id" ofType="SystemRolePermission" select="com.faon.blog.mapper.RolePermissionMapper.findByRoleId"/>
     </resultMap>
+    <sql id="table">
+        role
+    </sql>
     <sql id="selectField">
         id,`name`,status
     </sql>
@@ -15,7 +18,8 @@
     <select id="findRoleByRoleId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from role
+        from
+        <include refid="table"/>
         where id = #{roleId} and status = 0
     </select>
 

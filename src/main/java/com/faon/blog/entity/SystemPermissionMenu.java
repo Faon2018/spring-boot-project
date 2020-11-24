@@ -1,35 +1,38 @@
 package com.faon.blog.entity;
 
-import java.util.List;
 
+/**
+ * permission 与 permission_menu 一对多
+ * permission_menu 与 menu 一对一
+ */
 public class SystemPermissionMenu {
-    private Long id;
-    private Long permissionId;
-    private Long menuId;
+    private Integer id;
+    private Integer permissionId;
+    private Integer menuId;
     private Integer status;
-    private List<SystemMenu> systemMenus;
+    private SystemMenu systemMenu;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getPermissionId() {
+    public Integer getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(Long permissionId) {
+    public void setPermissionId(Integer permissionId) {
         this.permissionId = permissionId;
     }
 
-    public Long getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(Long menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
 
@@ -41,12 +44,12 @@ public class SystemPermissionMenu {
         this.status = status;
     }
 
-    public List<SystemMenu> getSystemMenus() {
-        return systemMenus;
+    public SystemMenu getSystemMenu() {
+        return systemMenu;
     }
 
-    public void setSystemMenus(List<SystemMenu> systemMenus) {
-        this.systemMenus = systemMenus;
+    public void setSystemMenu(SystemMenu systemMenu) {
+        this.systemMenu = systemMenu;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class SystemPermissionMenu {
                 ", permissionId=" + permissionId +
                 ", menuId=" + menuId +
                 ", status=" + status +
-                ", systemMenus=" + systemMenus +
+                ", systemMenu=" + systemMenu +
                 '}';
     }
 }

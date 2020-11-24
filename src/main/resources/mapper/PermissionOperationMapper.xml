@@ -7,9 +7,11 @@
         <result column="permission_id" jdbcType="INTEGER" property="permissionId" />
         <result column="operation_id" jdbcType="INTEGER" property="operationId" />
         <result column="status" jdbcType="INTEGER" property="status" />
-        <collection property="systemOperations" column="operation_id" ofType="com.faon.blog.entity.SystemOperation" select="com.faon.blog.mapper.OperationMapper.findOperationByOperationId"/>
+        <association property="systemOperation" column="operation_id" javaType="com.faon.blog.entity.SystemOperation" select="com.faon.blog.mapper.OperationMapper.findOperationByOperationId"/>
     </resultMap>
-
+    <sql id="table">
+        foreign_permission_operation
+    </sql>
     <sql id="selectField">
         id,permission_id,operation_id,status
     </sql>
@@ -17,7 +19,8 @@
     <select id="findByPermissionId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from permission_operation
+        from
+        <include refid="table"/>
         where permission_id = #{permissionId} and status = 0
     </select>
 

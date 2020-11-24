@@ -7,8 +7,11 @@
         <result column="permission_id" jdbcType="INTEGER" property="permissionId" />
         <result column="menu_id" jdbcType="INTEGER" property="menuId" />
         <result column="status" jdbcType="INTEGER" property="status"/>
-        <collection property="systemMenus" column="menu_id" ofType="com.faon.blog.entity.SystemMenu" select="com.faon.blog.mapper.MenuMapper.findMenuByMenuId"/>
+        <association property="systemMenu" column="menu_id" javaType="com.faon.blog.entity.SystemMenu" select="com.faon.blog.mapper.MenuMapper.findMenuByMenuId"/>
     </resultMap>
+    <sql id="table">
+        foreign_permission_menu
+    </sql>
     <sql id="selectField">
         id,permission_id,menu_id,status
     </sql>
@@ -16,7 +19,8 @@
     <select id="findByPermissionId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from permission_menu
+        from
+        <include refid="table"/>
         where permission_id = #{permissionId} and status = 0
     </select>
 

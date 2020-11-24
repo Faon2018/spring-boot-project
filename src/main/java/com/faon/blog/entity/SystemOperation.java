@@ -1,17 +1,17 @@
 package com.faon.blog.entity;
 
 public class SystemOperation {
-    private Long id;
+    private Integer id;
     private String name;//操作名称
     private String url;
     private Integer status;
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

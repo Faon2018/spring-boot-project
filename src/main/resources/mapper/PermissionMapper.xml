@@ -9,6 +9,9 @@
         <collection property="systemPermissionMenus" column="id" ofType="SystemPermissionMenu" select="com.faon.blog.mapper.PermissionMenuMapper.findByPermissionId"/>
         <collection property="systemPermissionOperations" column="id" ofType="com.faon.blog.entity.SystemPermissionOperation" select="com.faon.blog.mapper.PermissionOperationMapper.findByPermissionId"/>
     </resultMap>
+    <sql id="table">
+        permission
+    </sql>
     <sql id="selectField">
         id,`name`,status
     </sql>
@@ -16,7 +19,8 @@
     <select id="findPermissionByPermissionId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from permission
+        from
+        <include refid="table"/>
         where id = #{permissionId} and status = 0
     </select>
 

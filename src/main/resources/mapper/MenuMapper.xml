@@ -9,16 +9,12 @@
         <result column="url" jdbcType="VARCHAR" property="url"/>
         <result column="sort" jdbcType="INTEGER" property="sort"/>
         <result column="status" jdbcType="INTEGER" property="status" />
-        <association property="parentMenu" javaType="com.faon.blog.entity.SystemMenu" column="parent_id">
-            <result column="id" jdbcType="INTEGER" property="id" />
-            <result column="name" jdbcType="VARCHAR" property="name" />
-            <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
-            <result column="url" jdbcType="VARCHAR" property="url"/>
-            <result column="sort" jdbcType="INTEGER" property="sort"/>
-            <result column="status" jdbcType="INTEGER" property="status" />
-        </association>
+        <association property="parentMenu"  column="parent_id" select="selectMenuParent"/>
         <collection property="childrenMenus" ofType="SystemMenu" column="id" select="selectMenuChildren"/>
     </resultMap>
+    <sql id="table">
+        menu
+    </sql>
     <sql id="selectField">
         id,`name`,parent_id,url,sort,status
     </sql>
@@ -26,21 +22,24 @@
     <select id="findMenuByMenuId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from menu
+        from
+        <include refid="table"/>
         where id = #{menuId} and status = 0
     </select>
 
     <select id="selectMenuChildren" resultType="com.faon.blog.entity.SystemMenu">
         select
         <include refid="selectField"/>
-        from menu
+        from
+        <include refid="table"/>
         where parent_id = #{id} and status = 0
     </select>
 
     <select id="selectMenuParent" resultType="com.faon.blog.entity.SystemMenu">
         select
         <include refid="selectField"/>
-        from menu
+        from
+        <include refid="table"/>
         where id = #{parentId} and status = 0
     </select>
 

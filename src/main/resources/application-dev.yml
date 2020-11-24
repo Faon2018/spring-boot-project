@@ -62,6 +62,8 @@ mybatis:
   type-aliases-package: com.faon.blog.entity
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #用于控制台打印sql语句
+
 
 #showSql
 logging:

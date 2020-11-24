@@ -1,37 +1,39 @@
 package com.faon.blog.entity;
 
-import java.util.List;
-
+/**
+ * user 与 user_role 一对多
+ * user_role 与 role 一对一
+ */
 public class SystemUserRole {
-    private Long id;
-    private Long userId;
-    private Long roleId;
+    private Integer id;
+    private Integer userId;
+    private Integer roleId;
     private Integer status;
-    private List<SystemRole> systemRoles;
+    private SystemRole systemRole;
 
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public Long getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
@@ -43,12 +45,12 @@ public class SystemUserRole {
         this.status = status;
     }
 
-    public List<SystemRole> getSystemRoles() {
-        return systemRoles;
+    public SystemRole getSystemRole() {
+        return systemRole;
     }
 
-    public void setSystemRoles(List<SystemRole> systemRoles) {
-        this.systemRoles = systemRoles;
+    public void setSystemRole(SystemRole systemRole) {
+        this.systemRole = systemRole;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class SystemUserRole {
                 ", userId=" + userId +
                 ", roleId=" + roleId +
                 ", status=" + status +
-                ", systemRoles=" + systemRoles +
+                ", systemRole=" + systemRole +
                 '}';
     }
 }

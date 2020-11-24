@@ -1,36 +1,39 @@
 package com.faon.blog.entity;
 
 import java.security.Permission;
-import java.util.List;
 
+/**
+ * role 与 role_permission 一对多
+ * role_permission 与 permission 一对一
+ */
 public class SystemRolePermission {
-    private Long id;
-    private Long roleId;
-    private Long permissionId;
+    private Integer id;
+    private Integer roleId;
+    private Integer permissionId;
     private Integer status;
-    private List<Permission> permissions;
+    private SystemPermission systemPermission;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
-    public Long getPermissionId() {
+    public Integer getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(Long permissionId) {
+    public void setPermissionId(Integer permissionId) {
         this.permissionId = permissionId;
     }
 
@@ -42,12 +45,12 @@ public class SystemRolePermission {
         this.status = status;
     }
 
-    public List<Permission> getPermissions() {
-        return permissions;
+    public SystemPermission getSystemPermission() {
+        return systemPermission;
     }
 
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
+    public void setSystemPermission(SystemPermission systemPermission) {
+        this.systemPermission = systemPermission;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class SystemRolePermission {
                 ", roleId=" + roleId +
                 ", permissionId=" + permissionId +
                 ", status=" + status +
-                ", permissions=" + permissions +
+                ", systemPermission=" + systemPermission +
                 '}';
     }
 }

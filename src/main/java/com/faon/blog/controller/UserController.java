@@ -1,7 +1,9 @@
 package com.faon.blog.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.faon.blog.dao.PermissionDao;
 import com.faon.blog.dao.UserDao;
+import com.faon.blog.entity.SystemPermission;
 import com.faon.blog.entity.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private PermissionDao permissionDao;
 
     @RequestMapping("/add/{username}/{password}")
     public String  addNewUser(@PathVariable String username,@PathVariable String password){
@@ -34,4 +38,14 @@ public class UserController {
         System.out.println(userJson);
         return userJson;
     }
+
+    @RequestMapping("/selectPermission/{permissionId}")
+    public String find(@PathVariable("permissionId") int permissionId){
+        SystemPermission permission = permissionDao.findPermission(permissionId);
+        System.out.println(permission);
+        String userJson = JSON.toJSONString(permission);
+        System.out.println(userJson);
+        return userJson;
+    }
+
 }

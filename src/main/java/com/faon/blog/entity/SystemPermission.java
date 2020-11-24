@@ -3,17 +3,17 @@ package com.faon.blog.entity;
 import java.util.List;
 
 public class SystemPermission {
-    private Long id;
+    private Integer id;
     private String name;//权限节点名称
     private Integer status;//状态
     private List<SystemPermissionMenu> systemPermissionMenus;
     private List<SystemPermissionOperation> systemPermissionOperations;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

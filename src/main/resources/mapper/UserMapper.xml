@@ -9,9 +9,12 @@
         <result column="password" jdbcType="VARCHAR" property="password" />
         <collection property="systemUserRoles" column="id" ofType="com.faon.blog.entity.SystemUserRole" javaType="ArrayList"
             select="com.faon.blog.mapper.UserRoleMapper.findByUserId" />
-        <!--            select="findByUserId" />-->
+
 
     </resultMap>
+    <sql id="table">
+        `user`
+    </sql>
     <sql id="selectField">
         id,username,password
     </sql>
@@ -19,7 +22,9 @@
     <select id="findUserById" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from user where id = #{id}
+        from
+        <include refid="table"/>
+        where id = #{id}
     </select>
 
 

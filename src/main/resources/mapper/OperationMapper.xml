@@ -8,6 +8,9 @@
         <result column="url" jdbcType="VARCHAR" property="url" />
         <result column="status" jdbcType="INTEGER" property="status" />
     </resultMap>
+    <sql id="table">
+        operation
+    </sql>
     <sql id="selectField">
         id,`name`,url,status
     </sql>
@@ -15,7 +18,8 @@
     <select id="findOperationByOperationId" resultMap="BaseResultMap">
         select
         <include refid="selectField"/>
-        from operation
+        from
+        <include refid="table"/>
         where id = #{operationId} and status = 0
     </select>
 
