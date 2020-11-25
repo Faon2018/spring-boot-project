@@ -5,8 +5,10 @@ import com.faon.blog.dao.PermissionDao;
 import com.faon.blog.dao.UserDao;
 import com.faon.blog.entity.SystemPermission;
 import com.faon.blog.entity.SystemUser;
+import com.faon.blog.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,10 @@ public class UserController {
         }else {
             return "添加失败";
         }
+    }
+    @PostMapping("/login")
+    public String login(@PathVariable("userInfo") String userInfo){
+        return Result.SuccessResult(userInfo);
     }
     @RequestMapping("/select/{id}")
     public String findUser(@PathVariable int id){
