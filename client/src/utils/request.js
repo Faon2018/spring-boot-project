@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
@@ -7,14 +8,22 @@ import { getToken } from '@/utils/auth'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
+  timeout: 5000, // request timeout
+  headers: {
+    'Content-type': 'application/x-www-form-urlencoded'
+  }
+
 })
 
 // request interceptor
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-
+    console.log(config.data)
+    if (config.method === 'POST') { // 当为post请求时，对数据进行拼接
+      config.data = qs.stringify(config.data)// 处理400错误
+    }
+    console.log(config.data)
     if (store.getters.token) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
